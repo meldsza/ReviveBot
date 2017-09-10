@@ -3,10 +3,13 @@
  * Require them here to be included in the bot
  */
 
-require('./modules/hotline');
-//require('./modules/logs');
-require('./modules/api');
-require('./modules/ingame');
-require('./modules/saveAccessLog');
-require('./modules/influx');
-//require('./modules/accept');
+const modules = [
+    'hotline',
+    'api',
+    'ingame',
+    'saveAccessLog',
+    'influx'
+]
+const fork = require('child_process').fork;
+
+let forks = modules.map(m => fork("./bot/modules/" + m));

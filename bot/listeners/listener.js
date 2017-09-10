@@ -4,7 +4,7 @@ module.exports = {
         require('./slowmov'),
         require('./digest'),
         require('./help'),
-        require('./last_seen').message
+        //require('./last_seen').message
     ],
     guildMemberAdd: [
         require('./welcome')
@@ -22,6 +22,6 @@ module.exports = {
         require('./reactionNav').reactionAdd
     ],
     presenceUpdate: [
-        require('./last_seen').presence
+        //require('./last_seen').presence
     ]
 }

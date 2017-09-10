@@ -16,7 +16,7 @@ module.exports = async function (user, noDM) {
     }
     if (info.hasOwnProperty('error')) {
         if (!noDM) {
-            user.send("To link your discord account with your battlelog account follow the link given below\n"
+            member.user.send("To link your discord account with your battlelog account follow the link given below\n"
                 + "https://battlelog.co/discord_link.php");
             console.log("User " + user.username + " Not Linked. DMing user to link now");
         }

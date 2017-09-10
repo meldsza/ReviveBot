@@ -1,4 +1,4 @@
-//const refresh = require('./../lib/refresh');
+const refresh = require('./../lib/refresh');
 const settings = require('./../../settings.json');
 const request = require('request-promise-native');
 /**
@@ -9,11 +9,10 @@ const request = require('request-promise-native');
 async function command(params, message) {
     if (params.length >= 1) {
         message.mentions.users.map(async function (u) {
-            const r = await request({ uri: 'http://' + (process.env.REVIVE_API || 'localhost') + '/v0/discord/reverse_link/' + u.id, method: "POST" });
-            if (r == "ok")
+            if (await refresh(u))
                 await message.channel.send(u.toString() + " sucessfully linked");
             else
-                await message.channel.send(u.toString() + " unable to be linked");
+                await message.channel.send(u.toString() + " unable to be refresh as the person has not linked his account yet");
         });
         if (!settings.owners.includes(message.author.id)) return;
         message.mentions.roles.map(function (r) {
@@ -21,24 +20,18 @@ async function command(params, message) {
             r.members.map(async function (m) {
                 let u = m.user;
                 console.log("refreshing " + u.username);
-                const r = await request({
-                    uri: 'http://' + (process.env.REVIVE_API || 'localhost') + '/v0/discord/reverse_link/' + u.id, method: "POST"
-                });
-                if (r == "ok")
+                if (await refresh(u))
                     await message.channel.send(u.toString() + " sucessfully linked");
                 else
-                    await message.channel.send(u.toString() + " unable to be linked");
+                    await message.channel.send(u.toString() + " unable to be refresh as the person has not linked his account yet");
             })
         });
     }
     else {
-        const r = await request({
-            uri: 'http://' + (process.env.REVIVE_API || 'localhost') + '/v0/discord/reverse_link/' + message.author.id, method: "POST"
-        });
-        if (r == "ok")
+        if (await refresh(message.author))
             await message.channel.send(message.author.toString() + " sucessfully linked");
         else
-            await message.channel.send(message.author.toString() + " unable to be linked");
+            await message.channel.send(message.author.toString() + " unable to be refresh as you have not linked his account yet. See your DM");
     }
     return true;
 }
