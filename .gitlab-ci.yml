@@ -23,9 +23,9 @@ job3:
   script:
     - whoami
     - cd /opt/revive-bot/apps/revivebot
-    - git pull
-    - pod stop revivebot
-    - pod start revivebot
+    - sudo git pull
+    - sudo pod stop revivebot
+    - sudo pod start revivebot
   only:
     - master
   
