@@ -3,9 +3,9 @@
  * Require them here to be included in the bot
  */
 require('./modules/saveAccessLog')
+require('hotline.js')
+require('api.js')
 const modules = [
-    'hotline.js',
-    'api.js',
     'ingame.js',
     'influx.js'
 ]
