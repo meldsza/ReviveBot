@@ -11,8 +11,8 @@ const modules = [
     'influx'
 ]
 const pm2 = require('pm2');
-let list = {}
-pm2.list((err, list) => { list = list; fork() })
+let list = [];
+pm2.list((err, l) => { list = l; fork() })
 const fork = () => {
     modules.map(n => {
         const ch = list.find(l => l.name.toLowerCase().includes(n.toLowerCase()));
