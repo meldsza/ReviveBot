@@ -21,6 +21,7 @@ job2:
 job3:
   stage: deploy
   script:
+    - whoami
     - cd /opt/revive-bot/apps/revivebot
     - git pull
     - pod stop revivebot
