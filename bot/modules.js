@@ -24,7 +24,7 @@ const fork = () => {
                     console.log(n + ": " + err)
             })
         else
-            pm2.start(cwd + '/bot/modules' + n, {
+            pm2.start(process.cwd + '/bot/modules' + n, {
                 name: n,
                 maxRestarts: 1,
                 minUptime: 1600,
