@@ -2,6 +2,7 @@ const influx = require('./../../influx');
 const Message = require('./../../orm/Message');
 const bot = require('./../bot.js');
 let ready = false;
+console.log("Influx module active");
 bot.on('ready', async function () {
     let dbs = await influx.getDatabaseNames();
     console.log(dbs);
