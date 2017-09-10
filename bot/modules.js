@@ -4,11 +4,11 @@
  */
 
 const modules = [
-    'hotline',
-    'api',
-    'ingame',
-    'saveAccessLog',
-    'influx'
+    'hotline.js',
+    'api.js',
+    'ingame.js',
+    'saveAccessLog.js',
+    'influx.js'
 ]
 const pm2 = require('pm2');
 let list = [];
