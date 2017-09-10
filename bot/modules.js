@@ -2,14 +2,14 @@
  * Modules are indiviual components that run regardless of the commands issued.
  * Require them here to be included in the bot
  */
-require('./modules/saveAccessLog')
-require('./modules/hotline.js')
-require('./modules/api.js')
-const modules = [
-    'ingame.js',
-    'influx.js'
-]
 if (!require('./../settings.json').test) {
+    require('./modules/saveAccessLog')
+    require('./modules/hotline.js')
+    require('./modules/api.js')
+    const modules = [
+        'ingame.js',
+        'influx.js'
+    ]
     const pm2 = require('pm2');
     let list = [];
     pm2.list((err, l) => { list = l; fork() })
