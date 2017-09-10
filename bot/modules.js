@@ -12,4 +12,4 @@ const modules = [
 ]
 const fork = require('child_process').fork;
 
-let forks = modules.map(m => fork("./bot/modules/" + m, { stdio: 'inherit' }));
+let forks = modules.map(m => fork("./bot/modules/" + m, [], { stdio: 'inherit', env: process.env }));
