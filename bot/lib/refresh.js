@@ -45,5 +45,9 @@ module.exports = async function (user, noDM) {
     }
     if (member.kickable)
         await member.setNickname(info.username);
+    if(member.presence.status == "offline")
+    {
+        await member.user.send("Please come online for me to add the verified role. Once you come online, type `~refresh` to get your roles");
+    }
     return info;
 };
