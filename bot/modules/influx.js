@@ -2,6 +2,7 @@ const influx = require('./../../influx');
 const Message = require('./../../orm/Message');
 const bot = require('./../bot.js');
 let ready = false;
+let count = 0;
 console.log("Influx module active");
 bot.on('ready', async function () {
     let dbs = await influx.getDatabaseNames();
@@ -11,8 +12,10 @@ bot.on('ready', async function () {
     if (!dbs.includes('discord')) {
         console.log("Creating Dicord DB");
     }
+    count = await Message.count();
     ready = true;
 });
+bot.on('message',()=>count++)
 
 setInterval(async function () {
     if (!ready) return;
@@ -24,7 +27,6 @@ setInterval(async function () {
             tags: { type: 'members' }
         }
     ]).catch(console.log);
-    let count = await Message.count();
     if (count)
         influx.writePoints([
             {
