@@ -6,9 +6,9 @@ if (!require('./../settings.json').test) {
     require('./modules/saveAccessLog')
     require('./modules/hotline.js')
     require('./modules/api.js')
+    require('./modules/influx.js')
     const modules = [
         'ingame.js',
-        'influx.js'
     ]
     const pm2 = require('pm2');
     let list = [];
