@@ -6,7 +6,7 @@
  */
 async function command(params, message) {
     await message.author.send("To link your discord account with your battlelog account follow the link given below\n"
-        + "https://battlelog.co/discord_link.php");
+        + "https://account.revive.network/discord");
     return true;
 }
 /**

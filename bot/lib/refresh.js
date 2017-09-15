@@ -17,7 +17,7 @@ module.exports = async function (user, noDM) {
     if (info.hasOwnProperty('error')) {
         if (!noDM) {
             member.user.send("To link your discord account with your battlelog account follow the link given below\n"
-                + "https://battlelog.co/discord_link.php");
+                + "https://account.revive.network/discord");
             console.log("User " + user.username + " Not Linked. DMing user to link now");
         }
         await member.removeRole('275317218911322112');
@@ -45,8 +45,7 @@ module.exports = async function (user, noDM) {
     }
     if (member.kickable)
         await member.setNickname(info.username);
-    if(member.presence.status == "offline")
-    {
+    if (member.presence.status == "offline") {
         await member.user.send("Please come online for me to add the verified role. Once you come online, type `~refresh` to get your roles");
     }
     return info;
