@@ -23,12 +23,7 @@ if (!require('./../settings.json').test && false) {
                 pm2.start(__dirname + '/modules/' + n, {
                     name: n,
                     maxRestarts: 1,
-                    minUptime: 2000,
-                    env: {
-                        'DISCORD_TOKEN': process.env.DISCORD_TOKEN,
-                        'REVIVE_API': settings.revive_api,
-                        'INFLUX_HOST': influx_host
-                    }
+                    minUptime: 2000
                 }, (err) => {
                     if (!err)
                         console.log("Started " + n)
