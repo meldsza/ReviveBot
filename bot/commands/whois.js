@@ -11,7 +11,7 @@ async function command(params, message) {
         return false;
     }
     let res = await Promise.all(params.map(async function (name) {
-        let body = await request('http://' + (process.env.REVIVE_API || 'localhost') + "/v0/discord/did_from_uname/" + name);
+        let body = await request('http://' + (revive_api || 'localhost') + "/v0/discord/did_from_uname/" + name);
         try {
             body = JSON.parse(body)
         } catch (e) {

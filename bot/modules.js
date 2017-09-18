@@ -24,8 +24,8 @@ if (!require('./../settings.json').test) {
                     minUptime: 2000,
                     env: {
                         'DISCORD_TOKEN': process.env.DISCORD_TOKEN,
-                        'REVIVE_API': process.env.REVIVE_API,
-                        'INFLUX_HOST': process.env.INFLUX_HOST
+                        'REVIVE_API': revive_api,
+                        'INFLUX_HOST': influx_host
                     }
                 }, (err) => {
                     if (!err)

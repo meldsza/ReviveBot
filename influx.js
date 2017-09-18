@@ -1,8 +1,8 @@
 const Influx = require('influx');
 const influx = new Influx.InfluxDB({
- host: process.env.INFLUX_HOST,
- database: 'discord',
- schema: [
+  host: influx_host,
+  database: 'discord',
+  schema: [
     {
       measurement: 'statistics',
       fields: {
