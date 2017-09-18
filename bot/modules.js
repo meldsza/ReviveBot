@@ -4,7 +4,7 @@
  */
 if (!require('./../settings.json').test) {
 
-    const settings = require('./../../settings.json')
+    const settings = require('./../settings.json')
     require('./modules/saveAccessLog')
     require('./modules/hotline.js')
     require('./modules/api.js')
