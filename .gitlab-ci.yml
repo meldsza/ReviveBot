@@ -51,7 +51,7 @@ job3:
   stage: deploy
   script:
     - whoami
-    - cd /opt/revive-bot/apps/
+    - cd /opt/revive-bot/apps/revivebot
     - sudo git pull
     - echo "$settings_file" > settings.json
     - npm install
