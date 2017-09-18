@@ -28,9 +28,9 @@ variables:
           "bf2142": "351727965916364801",
           "bfheroes": "351728164952604682"
       },
-      "token": $DISCORD_TOKEN,
-      "influx_host" : $INFLUX_HOST,
-      "revive-api" : $revive-api
+      "token": "$DISCORD_TOKEN",
+      "influx_host" : "$INFLUX_HOST",
+      "revive-api" : "$revive-api"
     }
 stages:
   - build
