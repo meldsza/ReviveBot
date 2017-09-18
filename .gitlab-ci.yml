@@ -30,7 +30,7 @@ variables:
       },
       "token": "$DISCORD_TOKEN",
       "influx_host" : "$INFLUX_HOST",
-      "revive-api" : "$revive-api"
+      "revive_api" : "$revive-api"
     }
 stages:
   - build
