@@ -22,10 +22,10 @@ job3:
   stage: deploy
   script:
     - whoami
-    - cd /opt/revive-bot/apps/revivebot
+    - cd /opt/revive-bot/apps/
     - sudo git pull
     - npm install
-    - sudo pm2 restart index.js --update-env --name revivebot
+    - sudo DISCORD_TOKEN=$DISCORD_TOKEN pm2 restart index.js --update-env --name revivebot
   only:
     - master
   
