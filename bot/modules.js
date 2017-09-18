@@ -8,6 +8,7 @@ if (!require('./../settings.json').test) {
     require('./modules/saveAccessLog')
     require('./modules/hotline.js')
     require('./modules/api.js')
+    /**
     //require('./modules/influx.js')
     const modules = [
         'ingame.js',
@@ -16,6 +17,7 @@ if (!require('./../settings.json').test) {
     const pm2 = require('pm2');
     let list = [];
     pm2.list((err, l) => { list = l; fork() })
+    
     const fork = () => {
         modules.map(n => {
             const ch = list.find(l => l.name.toLowerCase().includes(n.toLowerCase()));
@@ -30,8 +32,11 @@ if (!require('./../settings.json').test) {
                     else
                         console.log(n + ": " + err)
                 })
-            else
+            else {
+
                 pm2.restart(n);
+            }
         })
     }
+     */
 }
