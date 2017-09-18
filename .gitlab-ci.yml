@@ -24,8 +24,8 @@ job3:
     - whoami
     - cd /opt/revive-bot/apps/revivebot
     - sudo git pull
-    - sudo pod stop revivebot
-    - sudo pod start revivebot
+    - npm install
+    - sudo pm2 restart index.js --update-env --name revivebot
   only:
     - master
   
