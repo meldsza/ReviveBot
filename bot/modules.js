@@ -21,7 +21,7 @@ if (!require('./../settings.json').test) {
                 pm2.start(__dirname + '/modules/' + n, {
                     name: n,
                     maxRestarts: 1,
-                    minUptime: 1600,
+                    minUptime: 2000,
                     env: {
                         'DISCORD_TOKEN': process.env.DISCORD_TOKEN,
                         'REVIVE_API': process.env.REVIVE_API,
