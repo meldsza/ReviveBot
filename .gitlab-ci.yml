@@ -45,6 +45,7 @@ job1:
 job2:
   stage: test
   script:
+    - echo "$settings_file" > settings.json
     - npm test
 job3:
   stage: deploy
@@ -52,6 +53,7 @@ job3:
     - whoami
     - cd /opt/revive-bot/apps/
     - sudo git pull
+    - echo "$settings_file" > settings.json
     - npm install
     - sudo DISCORD_TOKEN=$DISCORD_TOKEN pm2 restart index.js --update-env --name revivebot
   only:
