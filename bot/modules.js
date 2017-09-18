@@ -2,7 +2,7 @@
  * Modules are indiviual components that run regardless of the commands issued.
  * Require them here to be included in the bot
  */
-if (!require('./../settings.json').test && false) {
+if (!require('./../settings.json').test) {
 
     const settings = require('./../settings.json')
     require('./modules/saveAccessLog')
