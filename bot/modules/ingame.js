@@ -2,11 +2,13 @@ const bot = require('./../bot');
 const influx = require('./../../influx');
 const request = require('request-promise-native');
 let ingame;
+
+const settings = require('./../../settings.json')
 let guild;
 const updateIngame = async function () {
   if (!guild && !ingame) return;
 
-  let playing = await request('http://' + (revive_api || 'localhost') + '/v0/discord/online');
+  let playing = await request('http://' + (settings.revive_api || 'localhost') + '/v0/discord/online');
   playing = JSON.parse(playing);
 
   let toRemove = ingame.members.filter(function (m) {

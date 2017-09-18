@@ -1,5 +1,7 @@
 const request = require('request-promise-native');
 const bot = require('./../bot');
+
+const settings = require('./../../settings.json')
 module.exports = async function (user, noDM) {
     var guild = bot.guilds.get('184536578654339072');
     var member = guild.member(user);
@@ -8,7 +10,7 @@ module.exports = async function (user, noDM) {
     //console.log(user);
     var id = user.id;
     console.log(id);
-    let body = await request("http://" + (revive_api || 'localhost') + "/v0/discord/userinfo/" + id)
+    let body = await request("http://" + (settings.revive_api || 'localhost') + "/v0/discord/userinfo/" + id)
     console.log(body);
     try { var info = JSON.parse(body); }
     catch (e) {

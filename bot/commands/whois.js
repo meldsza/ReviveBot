@@ -1,5 +1,7 @@
 const request = require('request-promise-native');
 const bot = require('./../bot');
+
+const settings = require('./../../settings.json')
 /**
  * This method should return the response directly to the channel
  * @param {*string array} params 
@@ -11,7 +13,7 @@ async function command(params, message) {
         return false;
     }
     let res = await Promise.all(params.map(async function (name) {
-        let body = await request('http://' + (revive_api || 'localhost') + "/v0/discord/did_from_uname/" + name);
+        let body = await request('http://' + (settings.revive_api || 'localhost') + "/v0/discord/did_from_uname/" + name);
         try {
             body = JSON.parse(body)
         } catch (e) {

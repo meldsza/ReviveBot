@@ -1,4 +1,5 @@
 const bot = require('./../bot');
+const settings = require('./../../settings.json')
 const request = require('request-promise-native')
 /**
  * This method should return the response directly to the channel
@@ -17,7 +18,7 @@ async function command(params, message) {
     }
     let key = await request({
         method: "POST",
-        uri: "http://" + (revive_api || 'localhost') + "/v0/discord/beta/" + message.author.id
+        uri: "http://" + (settings.revive_api || 'localhost') + "/v0/discord/beta/" + message.author.id
     });
     key = JSON.parse(key);
     if (key.error) {

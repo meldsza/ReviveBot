@@ -2,6 +2,7 @@ const request = require('request-promise-native');
 const Discord = require('discord.js');
 const revive = require('revive-stats.js')
 const moment = require('moment');
+const settings = require('./../../settings.json')
 /**
  * This method should return the response directly to the channel
  * @param {*string array} params 
@@ -18,7 +19,7 @@ async function command(params, message) {
 	let atleastOne = false;
 	if (id === message.author.id) all = true;
 	let arr = [];
-	let body = await request('http://' + (revive_api || 'localhost') + "/v0/discord/userinfo/" + id);
+	let body = await request('http://' + (settings.revive_api || 'localhost') + "/v0/discord/userinfo/" + id);
 	try {
 		body = JSON.parse(body)
 	} catch (e) {

@@ -26,9 +26,9 @@ const getcommands = () => {
 getcommands();
 const getError = function (err) {
     if (settings.debug)
-        return err.stack.toString().replace(new RegExp(revive_api, 'g'), 'localhost')
+        return err.stack.toString().replace(new RegExp(settings.revive_api, 'g'), 'localhost')
     else
-        return err.toString().replace(new RegExp(revive_api, 'g'), 'localhost')
+        return err.toString().replace(new RegExp(settings.revive_api, 'g'), 'localhost')
 }
 module.exports = {
     execute: async function (cmd, params, message) {

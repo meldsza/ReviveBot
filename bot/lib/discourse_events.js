@@ -3,8 +3,10 @@ const bot = require('./../bot');
 const md = require('to-markdown');
 const MessageEmbed = require('discord.js').MessageEmbed;
 const mentionReg = /\[@[a-z]*\]\(\/u\/[a-z]*\)/igm;
+
+const settings = require('./../../settings.json')
 const did_from_uname = async function (uname) {
-    let res = await request('http://' + (revive_api || 'localhost') + '/v0/discord/did_from_uname/' + encodeURIComponent(uname));
+    let res = await request('http://' + (settings.revive_api || 'localhost') + '/v0/discord/did_from_uname/' + encodeURIComponent(uname));
     console.log(res);
     res = JSON.parse(res);
     return res.id;

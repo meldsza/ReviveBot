@@ -3,6 +3,8 @@
  * Require them here to be included in the bot
  */
 if (!require('./../settings.json').test) {
+
+    const settings = require('./../../settings.json')
     require('./modules/saveAccessLog')
     require('./modules/hotline.js')
     require('./modules/api.js')
@@ -24,7 +26,7 @@ if (!require('./../settings.json').test) {
                     minUptime: 2000,
                     env: {
                         'DISCORD_TOKEN': process.env.DISCORD_TOKEN,
-                        'REVIVE_API': revive_api,
+                        'REVIVE_API': settings.revive_api,
                         'INFLUX_HOST': influx_host
                     }
                 }, (err) => {

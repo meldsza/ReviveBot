@@ -1,6 +1,6 @@
+const bot = require('./../bot.js');
 const influx = require('./../../influx');
 const Message = require('./../../orm/Message');
-const bot = require('./../bot.js');
 let ready = false;
 let count = 0;
 console.log("Influx module active");
@@ -15,7 +15,7 @@ bot.on('ready', async function () {
     count = await Message.count();
     ready = true;
 });
-bot.on('message',()=>count++)
+bot.on('message', () => count++)
 
 setInterval(async function () {
     if (!ready) return;
