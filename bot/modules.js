@@ -18,7 +18,7 @@ if (!require('./../settings.json').test) {
         modules.map(n => {
             const ch = list.find(l => l.name.toLowerCase().includes(n.toLowerCase()));
             if (!ch)
-                pm2.start(__dirname + '/bot/modules/' + n, {
+                pm2.start(__dirname + '/modules/' + n, {
                     name: n,
                     maxRestarts: 1,
                     minUptime: 1600,
