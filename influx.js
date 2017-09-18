@@ -1,6 +1,7 @@
 const Influx = require('influx');
+const settings = require('./settings.json');
 const influx = new Influx.InfluxDB({
-  host: influx_host,
+  host: settings.influx_host,
   database: 'discord',
   schema: [
     {
