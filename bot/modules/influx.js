@@ -1,3 +1,13 @@
+const settings = require('./../../settings.json');
+if (!settings.clientOptions)
+    settings.clientOptions = {};
+settings.messageCacheMaxSize = 1;
+settings.messageCacheLifetime = 1;
+settings.messageSweepInterval = 5;
+if (!settings.clientOptions.disabledEvents)
+    settings.clientOptions.disabledEvents = ["TYPING_START", "VOICE_SERVER_UPDATE", "VOICE_STATE_UPDATE"];
+const disabledEvents = ["CHANNEL_CREATE", "CHANNEL_PINS_UPDATE", "GUILD_BAN_REMOVE", "CHANNEL_DELETE", "CHANNEL_UPDATE", "MESSAGE_REACTION_ADD", "MESSAGE_REACTION_REMOVE", "MESSAGE_REACTION_REMOVE_ALL", "GUILD_BAN_REMOVE", "GUILD_BAN_ADD"]
+disabledEvents.map(e => settings.clientOptions.disabledEvents.push(e))
 const bot = require('./../bot.js');
 const influx = require('./../../influx');
 const Message = require('./../../orm/Message');
@@ -16,7 +26,7 @@ bot.on('ready', async function () {
     ready = true;
 });
 bot.on('message', () => count++)
-
+bot.on('messageDelete', () => count++)
 setInterval(async function () {
     if (!ready) return;
     const guild = bot.guilds.get("184536578654339072");

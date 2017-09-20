@@ -30,7 +30,10 @@ variables:
       },
       "token": "$DISCORD_TOKEN",
       "influx_host" : "$INFLUX_HOST",
-      "revive_api" : "$REVIVE_API"
+      "revive_api" : "$REVIVE_API",
+      "clientOptions":{
+        "disabledEvents" :["TYPING_START","VOICE_SERVER_UPDATE","VOICE_STATE_UPDATE"]
+      }
     }
 stages:
   - build

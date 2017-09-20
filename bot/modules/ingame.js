@@ -1,9 +1,19 @@
+const settings = require('./../../settings.json');
+if (!settings.clientOptions)
+  settings.clientOptions = {};
+settings.messageCacheMaxSize = 1;
+settings.messageCacheLifetime = 1;
+settings.messageSweepInterval = 5;
+if (!settings.clientOptions.disabledEvents)
+  settings.clientOptions.disabledEvents = ["TYPING_START", "VOICE_SERVER_UPDATE", "VOICE_STATE_UPDATE"];
+const disabledEvents = ["CHANNEL_CREATE", "CHANNEL_PINS_UPDATE", "GUILD_BAN_REMOVE", "PRESENCE_UPDATE", "CHANNEL_DELETE", "CHANNEL_UPDATE", "MESSAGE_CREATE", "MESSAGE_DELETE", "MESSAGE_UPDATE", "MESSAGE_DELETE_BULK", "MESSAGE_REACTION_ADD", "MESSAGE_REACTION_REMOVE", "MESSAGE_REACTION_REMOVE_ALL", "GUILD_BAN_REMOVE", "GUILD_BAN_ADD", "GUILD_ROLE_DELETE", "GUILD_ROLE_CREATE"]
+disabledEvents.map(e => settings.clientOptions.disabledEvents.push(e))
 const bot = require('./../bot');
 const influx = require('./../../influx');
 const request = require('request-promise-native');
 let ingame;
 
-const settings = require('./../../settings.json')
+
 let guild;
 const updateIngame = async function () {
   if (!guild && !ingame) return;
