@@ -43,7 +43,7 @@ module.exports = {
                         denied: true,
                         success: false,
                         channel: message.channel.id,
-                        normalChannel: (!message.channel.name.toLowerCase().includes("bot") && !message.channel.name.toLowerCase().includes("command") && !message.channel.name.toLowerCase().includes("test"))
+                        normalChannel: (message.channel.name.toLowerCase().includes("bot") && !message.channel.name.toLowerCase().includes("command") && !message.channel.name.toLowerCase().includes("test"))
                     })
                 let commandsexec = access_log.filter(ac => (ac.command == cmd) && (ac.time > message.createdTimestamp - 30000) && ac.normalChannel && ac.fun).size;
                 if (commandsexec > 5) {
@@ -61,7 +61,7 @@ module.exports = {
                         denied: true,
                         success: false,
                         channel: message.channel.id,
-                        normalChannel: (!message.channel.name.toLowerCase().includes("bot") && !message.channel.name.toLowerCase().includes("command") && !message.channel.name.toLowerCase().includes("test"))
+                        normalChannel: (message.channel.name && !message.channel.name.toLowerCase().includes("bot") && !message.channel.name.toLowerCase().includes("command") && !message.channel.name.toLowerCase().includes("test"))
                     });
                 }
             }
@@ -74,7 +74,7 @@ module.exports = {
                     denied: false,
                     fun: commands[cmd].fun,
                     channel: message.channel.id,
-                    normalChannel: (!message.channel.name.toLowerCase().includes("bot") && !message.channel.name.toLowerCase().includes("command") && !message.channel.name.toLowerCase().includes("test"))
+                    normalChannel: (message.channel.name && message.channel.name.toLowerCase().includes("bot") && !message.channel.name.toLowerCase().includes("command") && !message.channel.name.toLowerCase().includes("test"))
                 })
             ).catch(err => {
                 access_log.push({
@@ -86,7 +86,7 @@ module.exports = {
                     error: err.stack,
                     fun: commands[cmd].fun,
                     channel: message.channel.id,
-                    normalChannel: (!message.channel.name.toLowerCase().includes("bot") && !message.channel.name.toLowerCase().includes("command") && !message.channel.name.toLowerCase().includes("test"))
+                    normalChannel: (message.channel.name && !message.channel.name.toLowerCase().includes("bot") && !message.channel.name.toLowerCase().includes("command") && !message.channel.name.toLowerCase().includes("test"))
                 })
                 message.channel.send(getError(err), { code: 'error', split: true }).catch(console.log)
             })
