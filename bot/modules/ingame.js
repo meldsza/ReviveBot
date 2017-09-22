@@ -32,10 +32,10 @@ const updateIngame = async function () {
   }));
   await Promise.all(playing.map(async function (m) {
     if (m === "") return;
-    const user = await bot.fetchUser(m);
+    const user = await bot.users.fetch(m);
     if (!user) return;
     try {
-      const member = await guild.fetchMember(user);
+      const member = await guild.members.fetch(user);
       if (!member.roles.get(ingame.id))
         await member.addRole(ingame);
     }
