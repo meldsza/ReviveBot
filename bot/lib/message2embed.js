@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 module.exports = async function (message) {
-    let embed = message.embeds.filter(function(e){
-        if(e.type== "rich")
+    let embed = message.embeds.filter(function (e) {
+        if (e.type == "rich")
             return e;
     }).shift();
     if (embed && embed != null) {
@@ -11,8 +11,8 @@ module.exports = async function (message) {
     embed.setAuthor(message.author.username, message.author.avatarURL())
     embed.setTitle((message.guild) ? (message.channel.name + " in " + message.guild.name) : (" in a DM with " + message.channel.recipient.tag));
     embed.setDescription(message.cleanContent);
-    embed.setTimestamp(message.createdTimestamp);
-    if(message.guild)
+    embed.setTimestamp(new Date(guild.createdAt));
+    if (message.guild)
         embed.setColor(message.member.displayColor);
     return embed;
 }

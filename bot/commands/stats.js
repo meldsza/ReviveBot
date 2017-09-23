@@ -11,7 +11,7 @@ async function command(params, message) {
         .setThumbnail(guild.iconURL)
         .setTitle(guild.name)
         .setAuthor(guild.owner.user.username, guild.owner.user.displayAvatarURL)
-        .setTimestamp(guild.createdAt)
+        .setTimestamp(new Date(guild.createdAt))
         .addField('Members: ', guild.memberCount, true)
         .addField('Online: ', guild.presences.map(p => p.status != 'offline').length, true)
         .addField('Region: ', guild.region, true);
