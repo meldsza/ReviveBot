@@ -43,7 +43,7 @@ stages:
 job1:
   stage: build
   script:
-    - npm install --no-save
+    - npm install --no-save; exit 0;
     - echo $SECRET_IS_WORKING
 job2:
   stage: test
