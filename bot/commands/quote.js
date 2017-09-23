@@ -15,15 +15,15 @@ async function command(params, message) {
     if (m) {
         console.log(m);
         let ch = bot.channels.get(m.attributes.channel);
-        m = await ch.fetchMessage(m.attributes.messageID);
+        m = await ch.messages.fetch(m.attributes.messageID);
     }
     else if (params[0].startsWith('-')) {
         params[0] = parseInt(params[0].substring(1));
-        m = await message.channel.fetchMessages({ limit: params[0] });
+        m = await message.channel.messages.fetch({ limit: params[0] });
         m = m.last();
     }
     else {
-        m = await message.channel.fetchMessage(params[0]);
+        m = await message.channel.messages.fetch(params[0]);
     }
     if (!m) {
         await message.reply("message not available");

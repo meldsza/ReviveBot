@@ -25,7 +25,7 @@ bot.on('messageUpdate', (oldMessage, newMessage) => {
     });
     if (m) {
         //console.log(m);
-        bot.channels.get(m.channel).fetchMessage(m.newMessage).edit("**" + oldMessage.author.username + ":** " + newMessage.cleanContent + attach);
+        bot.channels.get(m.channel).messages.fetch(m.newMessage).edit("**" + oldMessage.author.username + ":** " + newMessage.cleanContent + attach);
     }
 });
 bot.on('messageDelete', message => {
@@ -37,6 +37,6 @@ bot.on('messageDelete', message => {
     });
     if (m) {
         //console.log(m);
-        bot.channels.get(m.channel).fetchMessage(m.newMessage).then(msg => msg.delete()).then(messageDB.data.splice(messageDB.data.indexOf(m), 1)).catch(console.log);
+        bot.channels.get(m.channel).messages.fetch(m.newMessage).then(msg => msg.delete()).then(messageDB.data.splice(messageDB.data.indexOf(m), 1)).catch(console.log);
     }
 });

@@ -4,7 +4,7 @@ var Message = bookshelf.Model.extend({
     tableName: 'discord_messages',
     hasTimestamps: false,
     message: function () {
-        return bot.guilds.get(this.attributes.channel).fetchMessage(this.attributes.messageID)
+        return bot.guilds.get(this.attributes.channel).messages.fetch(this.attributes.messageID)
     },
     user: function () {
         return this.message().author;

@@ -41,7 +41,7 @@ async function command(params, message) {
             return true;
         }
     }
-    let messages = await channel.fetchMessages({ limit: limit });
+    let messages = await channel.messages.fetch({ limit: limit });
     if (messages.size < 2) {
         await message.channel.send("Deleted 0 messages").then(m => m.delete(10000));
         return true;

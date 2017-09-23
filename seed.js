@@ -1,8 +1,8 @@
 const bot = require('./bot/bot');
 const Message = require('./orm/Message');
 bot.on('ready', () => {
-    bot.channels.map(async function(channel) {
-        let messages = await channel.fetchMessages({ limit: 100 })
+    bot.channels.map(async function (channel) {
+        let messages = await channel.messages.fetch({ limit: 100 })
         messages.map((message) => {
             new Message({
                 messageID: message.id,
