@@ -43,7 +43,6 @@ stages:
 job1:
   stage: build
   script:
-    - sudo rm -rf node_modules
     - npm install --no-save
     - echo $SECRET_IS_WORKING
 job2:
