@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const bot = require('../bot');
 const refreshUser = require('./../lib/refresh');
-const discourse_events = require('./../lib/discourse_events')
+//const discourse_events = require('./../lib/discourse_events')
 let app = express();
 const path = require('path');
 let ready = false;
@@ -40,6 +40,7 @@ app.post('/push/user/:userId/:userId2/transfer', function (req, res) {
     res.send('updated');
     res.end();
 });
+
 app.get('/sql/messages', function (req, res) {
     var file = path.resolve(__dirname, '..', '..', 'dev.sqlite3');
     res.download(file);
@@ -49,6 +50,7 @@ app.get('/logs', function (req, res) {
     res.jsonp(commands.access_log);
     res.end();
 });
+/*
 app.post('/notify', function (req, res) {
     if (!ready) return;
     let event = req.headers['x-discourse-event-type'];
@@ -71,6 +73,7 @@ app.post('/notify', function (req, res) {
     res.sendStatus(202);
     res.end();
 });
+*/
 app.get('/reverse/:id', async function (req, res) {
     if (!ready) return;
     console.log("Recieved reverse link request for <@" + req.params.id + ">")
